@@ -19,7 +19,7 @@ public class MainController {
 		EProductDAO dao;
 		
 		
-		@RequestMapping(value="/springjdbc/list",method = RequestMethod.GET)
+		@RequestMapping(value="/list",method = RequestMethod.GET)
 		public String   listProducts(ModelMap model) {
 			
 			System.out.println("Main Controller");
@@ -28,7 +28,7 @@ public class MainController {
 			
 				model.addAttribute("productList", productList);
 				
-				return "listProducts"; // its a view/page name
+				return "/WEB-INF/view/listProducts"; // its a view/page name
 			
 		}
 	
