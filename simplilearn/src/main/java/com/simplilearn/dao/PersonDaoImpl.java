@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.simplilearn.bean.Person;
 
-@Repository
+@Repository("personDao")
 @Qualifier("personDao")
 public class PersonDaoImpl implements PersonDao {
  
