@@ -9,3 +9,7 @@ import com.simplilearn.ems.entity.Employee;
 public interface EmployeeRepository  extends JpaRepository<Employee, Integer> {
 
 }
+
+
+//CrudRepository
+//JpaRespository

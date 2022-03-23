@@ -18,6 +18,11 @@ public class Employee {  //
 	private double salary;
 	
 	
+	public Employee() {
+		
+	}
+	
+	
 	public int getId() {
 		return id;
 	}
