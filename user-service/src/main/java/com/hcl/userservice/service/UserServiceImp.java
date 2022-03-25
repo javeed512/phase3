@@ -16,10 +16,9 @@ public class UserServiceImp implements IUserService {
 
 	@Autowired
 	UserRepository repo;
-	
+
 	@Autowired
 	RestTemplate restTemplate;
-	
 
 	@Override
 	public User addUser(UserDTO userDTO) {
@@ -39,30 +38,30 @@ public class UserServiceImp implements IUserService {
 		return repo.findById(id).orElse(new User());
 	}
 
-	@Override 
+	@Override
 	// it will take user from repo and it takes dept from dept microservice
 	public UserDepartmentVO getUserByIdWithDepartment(long userId) {
 
-			//get user by id from local repo	
+		// get user by id from local repo
 
 		User user = this.getUserById(userId); // calling getUserById from current service class
-		
-		long deptId =	user.getDepartmentId();		
-		
-			
-		// get dept from dept microservice 
-ResponseEntity<Department> responseEntity =  restTemplate.getForEntity("http://localhost:8181/v1/department/get/"+deptId, Department.class);
-			
-				
 
+		long deptId = user.getDepartmentId();
 
-		Department department =	responseEntity.getBody();
-		
-		
-		//set user+dept to the UserDepartmentVO obj and return
-		
-		UserDepartmentVO  userDepartmentVO = new UserDepartmentVO(user, department);
+		// get dept from dept microservice
+		ResponseEntity<Department> responseEntity = restTemplate
+				.getForEntity("http://localhost:8181/v1/department/get/" + deptId, Department.class);
 
+				// localhost:PORTNO/SERVICE
+		
+		//post 
+			//restTemplate.postForEntity(url, request, responseType)
+		
+		Department department = responseEntity.getBody();
+
+		// set user+dept to the UserDepartmentVO obj and return
+
+		UserDepartmentVO userDepartmentVO = new UserDepartmentVO(user, department);
 
 		return userDepartmentVO;
 	}

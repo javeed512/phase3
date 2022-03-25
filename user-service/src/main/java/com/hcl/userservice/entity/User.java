@@ -21,6 +21,8 @@ public class User {
 	private String email;
 	private  long departmentId;  // foreign key
 	
+	
+	
 	public User() {
 		
 		
